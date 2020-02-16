@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pets import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls ,name='abc'),
     path('list/', views.pet_list , name = 'pet-list'),
     path('detail/<int:pet_id>/', views.pet_detail , name = 'pet-detail'),
     path('pets/create/',views.create_pet ,name='create-pet'),
@@ -27,3 +30,4 @@ urlpatterns = [
     path('pets/delete/<int:pet_id>/',views.delete_pet , name= 'delete-pet'),
 
 ]
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

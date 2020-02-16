@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+{%extends "base.html"%}
+{% load static %}
+{% block title %}
+PetList
+{% endblock %}
+{% block content %}
+<img src="{% static 'images/picture.jpg' %}">
     {% for pet in pets %}
     <a href= "{% url 'pet-detail' pet.id %}">
           <ul>
@@ -18,5 +18,4 @@
         <a href="{% url 'delete-pet' pet_id=pet.id %}">Delete Pet :'( </a>
       </li>
       {% endfor %}
-  </body>
-</html>
+      {% endblock %}

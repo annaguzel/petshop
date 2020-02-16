@@ -36,7 +36,7 @@ def update_pet(request, pet_id):
     pet= Pet.objects.get(id=pet_id)
     form = PetForm(instance=pet)
     if request.method == "POST":
-        form = PetForm(request.POST,instance=pet)
+        form = PetForm(request.POST,request.FILES,instance=pet)
         if form.is_valid():
             form.save()
             return redirect('pet-list')

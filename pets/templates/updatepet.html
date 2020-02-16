@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Update Pet</title>
-  </head>
-  <body>
-    <form action="{% url 'update-pet' pet_id=pet.id %}" method="POST">
+{%extends "base.html"%}
+{% load crispy_forms_tags %}
+{% block title %}
+Update Pet
+{% endblock %}
+{% block content %}
+    <form action="{% url 'update-pet' pet_id=pet.id %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form}}
+            {{form|crispy}}
             <input type="submit" value="Update">
         </form>
-  </body>
-</html>
+{% endblock %}

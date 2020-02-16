@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+{% extends "base.html" %}
+{% block title %}
+Pet Detail
+{% endblock %}
+{% block content %}
     <ul>
         <li>{{pet.name}}</li>
+        {% if pet.image %}
+        <img src="{{pet.image.url}}">
+        {% endif %}
         <li>{{pet.age}}</li>
         <li>{{pet.available}}</li>
         <li>{{pet.image}}</li>
         <li>{{pet.price}}</li>
     </ul>
-  </body>
-</html>
+    <a href="{% url 'update-pet' pet_id=pet.id %}">Update</a>
+    <a href="{% url 'delete-pet' pet_id=pet.id  %}">Delete</a>
+  {% endblock %}
