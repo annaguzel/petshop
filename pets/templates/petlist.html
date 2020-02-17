@@ -4,7 +4,6 @@
 PetList
 {% endblock %}
 {% block content %}
-<img src="{% static 'images/picture.jpg' %}">
     {% for pet in pets %}
     <a href= "{% url 'pet-detail' pet.id %}">
           <ul>
